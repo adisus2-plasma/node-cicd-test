@@ -9,9 +9,8 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run:
-         command: ssh $SSH_PUB
-      - yesorno:
-         command: yes
+         command: ssh $SSH_PUB \
+                  yes
 
 workflows:
   example-workflow:
