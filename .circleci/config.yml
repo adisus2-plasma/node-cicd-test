@@ -1,0 +1,15 @@
+version: '2.1'
+orbs:
+  azure-cli: circleci/azure-cli@1.0.0
+jobs:
+  verify-install:
+    executor: azure-cli/default
+    steps:
+      - azure-cli/install
+      - run:
+          command: az -v
+          name: Verify Azure CLI is installed
+workflows:
+  example-workflow:
+    jobs:
+      - verify-install
