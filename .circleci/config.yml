@@ -22,7 +22,7 @@ jobs:
               --tenant $AZURE_TENANT \
               -u $AZURE_USERNAME \
               -p $AZURE_PASSWORD
-           name: Login to the Azure CLI via username/password
+          name: Login to the Azure CLI via username/password
 
 workflows:
   example-workflow:
