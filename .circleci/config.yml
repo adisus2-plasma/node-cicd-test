@@ -9,9 +9,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - run:
-         command: ssh $SSH_PUB \
-      - run:
-         command: -y
+         command: | 
+                 ssh $SSH_PUB
+                 -y
 
 workflows:
   example-workflow:
