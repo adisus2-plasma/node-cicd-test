@@ -14,4 +14,4 @@ jobs:
 workflows:
   example-workflow:
     jobs:
-      - login-with-user
+      - login-to-azure
