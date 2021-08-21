@@ -9,14 +9,20 @@ jobs:
     docker:
       # replace with your preferred image
       - image: cimg/base:stable
+    parameters:
+      alternate-tenant:
+        default: false
+        description: Use an alternate tenant
+        type: boolean
     steps:
       - run:
-          command: az login \
-          <<#parameters.alternate-tenant>> \
-          --tenant $<<parameters.azure-tenant>> <</parameters.alternate-tenant>> \
-          -u $<<parameters.azure-username>> \
-          -p $<<parameters.azure-password>>
-        name: Login to the Azure CLI via username/password 
+          command: |
+            az login \
+              <<parameters.alternate-tenant>> \
+              --tenant $AZURE_TENANT \
+              -u $AZURE_USERNAME \
+              -p $AZURE_PASSWORD
+           name: Login to the Azure CLI via username/password
 
 workflows:
   example-workflow:
