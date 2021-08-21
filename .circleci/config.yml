@@ -6,10 +6,12 @@ jobs:
     executor: azure-cli/default
     steps:
       - azure-cli/install
+      - azure-cli/login-with-user:
+          alternate-tenant: true
       - run:
-          command: az -v
-          name: Verify Azure CLI is installed
+          command: az resource list
+          name: List resources of tenant stored as `AZURE_TENANT` env var
 workflows:
   example-workflow:
     jobs:
-      - verify-install
+      - login-with-user
