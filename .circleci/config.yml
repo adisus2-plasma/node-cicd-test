@@ -12,9 +12,9 @@ jobs:
     steps:
       - azure-cli/login-with-user:
           alternate-tenant: true 
-          azure-password: $AZURE_PASSWORD 
-          azure-tenant: $AZURE_TENANT 
-          azure-username: $AZURE_USERNAME 
+          azure-password: "$AZURE_PASSWORD" 
+          azure-tenant: "$AZURE_TENANT"
+          azure-username: "$AZURE_USERNAME" 
 
 workflows:
   example-workflow:
