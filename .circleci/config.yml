@@ -10,8 +10,8 @@ jobs:
     steps:
       - run:
          command: |
-                  ssh $SSH_PUB
-                  yes
+                  ssh $SSH_PUB \
+                  yes \
                   $SSH_PASS
 
 workflows:
