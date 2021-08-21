@@ -9,9 +9,9 @@ jobs:
       - image: cimg/base:stable
     steps:
       - azure-cli/login-with-user:
-          azure-password: AZURE_PASSWORD 
-          azure-tenant: AZURE_TENANT 
-          azure-username: AZURE_USERNAME 
+          azure-password: $AZURE_PASSWORD 
+          azure-tenant: $AZURE_TENANT 
+          azure-username: $AZURE_USERNAME 
           alternate-tenant: true 
 
 workflows:
