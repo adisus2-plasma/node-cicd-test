@@ -10,11 +10,13 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - azure-cli/login-with-user:
-          alternate-tenant: true 
-          azure-password: ${AZURE_PASSWORD}
-          azure-tenant: ${AZURE_TENANT}
-          azure-username: ${AZURE_USERNAME} 
+      - run:
+          command: az login \
+          <<#parameters.alternate-tenant>> \
+          --tenant $<<parameters.azure-tenant>> <</parameters.alternate-tenant>> \
+          -u $<<parameters.azure-username>> \
+          -p $<<parameters.azure-password>>
+        name: Login to the Azure CLI via username/password 
 
 workflows:
   example-workflow:
