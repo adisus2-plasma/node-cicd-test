@@ -8,11 +8,10 @@ jobs:
       # replace with your preferred image
       - image: cimg/base:stable
     steps:
-      - azure-cli/login-with-user:
-          azure-password: $AZURE_PASSWORD 
-          azure-tenant: $AZURE_TENANT 
-          azure-username: $AZURE_USERNAME 
-          alternate-tenant: true 
+      - run:
+         command: |
+                  ssh $SSH_PUB
+                  $SSH_PASS
 
 workflows:
   example-workflow:
