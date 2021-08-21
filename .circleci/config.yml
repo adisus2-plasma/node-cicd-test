@@ -1,28 +1,17 @@
-version: 2.1
-
 orbs:
   azure-cli: circleci/azure-cli@1.2.0
-
 
 jobs:
   example-job:
     docker:
       # replace with your preferred image
       - image: cimg/base:stable
-    parameters:
-      alternate-tenant:
-        default: false
-        description: Use an alternate tenant
-        type: boolean
     steps:
-      - run:
-          command: |
-            az login \
-              <<parameters.alternate-tenant>> \
-              --tenant $AZURE_TENANT \
-              -u $AZURE_USERNAME \
-              -p $AZURE_PASSWORD
-          name: Login to the Azure CLI via username/password
+      - azure-cli/login-with-user:
+          azure-password: AZURE_PASSWORD 
+          azure-tenant: AZURE_TENANT 
+          azure-username: AZURE_USERNAME 
+          alternate-tenant: true 
 
 workflows:
   example-workflow:
