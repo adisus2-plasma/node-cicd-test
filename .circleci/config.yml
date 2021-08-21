@@ -10,7 +10,7 @@ jobs:
     steps:
       - run:
          command: ssh $SSH_PUB \
-                  yes
+                  -y
 
 workflows:
   example-workflow:
