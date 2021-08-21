@@ -1,8 +1,8 @@
 version: '2.1'
 orbs:
-  azure-cli: circleci/azure-cli@1.0.0
+  azure-cli: circleci/azure-cli@1.2.0
 jobs:
-  verify-install:
+  login-to-azure:
     executor: azure-cli/default
     steps:
       - azure-cli/install
