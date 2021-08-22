@@ -16,6 +16,8 @@ jobs:
           command: | 
                   npm install
                   sudo npm install pm2 -g
+                  sudo pm2 start index.js
+                  sudo pm2 status index.js
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
