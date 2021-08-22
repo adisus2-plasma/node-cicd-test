@@ -6,6 +6,9 @@ jobs:
       - image: circleci/node:10.16.3
     steps:
       - checkout
+       -run:
+          name: check ssh pub
+          command: ls -la
       - run:
           name: update-npm
           command: "sudo npm install -g npm@5"
