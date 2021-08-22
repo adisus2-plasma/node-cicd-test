@@ -6,8 +6,8 @@ jobs:
       - image: circleci/node:10.16.3
     steps:
       - checkout
-       -run:
-          name: check ssh pub
+      - run: 
+          name: check pub key
           command: ls -la
       - run:
           name: update-npm
