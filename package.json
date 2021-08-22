@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node index",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy" : "npx gh-pages -b deploy --message '[skip ci] Updates' -d ./"
+    "deploy" : "npx gh-pages -b deploy --message '[ci skip] Updates' -d ./"
   },
   "author": "",
   "license": "ISC",
