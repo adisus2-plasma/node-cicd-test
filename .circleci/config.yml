@@ -18,6 +18,7 @@ jobs:
                   sudo npm install pm2 -g
                   sudo pm2 start index.js
                   sudo pm2 status index.js
+                  sudo npm install gh-pages --save-dev
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
