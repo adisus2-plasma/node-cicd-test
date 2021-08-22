@@ -23,6 +23,8 @@ jobs:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
+      - run:
+          command: curl nodefakeserver.azurewebsites.net
 
   deploy:
     working_directory: ~/repo
@@ -38,9 +40,6 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - $GITHUB_FINGERPRINT
-      - run:
-          name: check localhost
-          command: curl localhost
       - run:
           name: Deploy to Azure Web App Using Azure Container Registry Task
           command: npm run deploy
