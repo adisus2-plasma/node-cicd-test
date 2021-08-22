@@ -43,6 +43,8 @@ jobs:
       - run:
           name: Deploy to Azure Web App Using Azure Container Registry Task
           command: npm run deploy
+      - run:
+          command: curl nodefakeserver.azurewebsites.net
 
 workflows:
   version: 2
