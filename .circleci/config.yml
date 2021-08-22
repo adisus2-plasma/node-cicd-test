@@ -8,7 +8,9 @@ jobs:
       - checkout
       - run: 
           name: check pub key
-          command: ls -la
+          command: |
+                  cd ..
+                  ls -la
       - run:
           name: update-npm
           command: "sudo npm install -g npm@5"
