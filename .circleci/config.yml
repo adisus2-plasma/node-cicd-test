@@ -6,13 +6,6 @@ jobs:
       - image: circleci/node:10.16.3
     steps:
       - checkout
-      - run: 
-          name: check pub key
-          command: |
-                  cd ..
-                  ls -la
-                  cd .ssh/
-                  cat id_rsa.pub
       - run:
           name: update-npm
           command: "sudo npm install -g npm@5"
@@ -40,6 +33,9 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - $GITHUB_FINGERPRINT
+      - run:
+          name: Check config
+          command: cat index.js
       - run:
           name: Deploy to Azure Web App Using Azure Container Registry Task
           command: npm run deploy
