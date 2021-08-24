@@ -8,23 +8,19 @@ jobs:
       - checkout
       - run:
           name: update-npm
-          command: "sudo npm install -g npm@6"
+          command: "sudo npm install -g npm@5"
       - restore_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
       - run:
           name: install-packages
-          command: | 
-                  npm install
-                  sudo npm install pm2 -g
-                  sudo pm2 start index.js
-                  sudo pm2 status index.js
-                  sudo npm install gh-pages --save-dev
+          command: npm install
       - save_cache:
           key: dependency-cache-{{ checksum "package-lock.json" }}
           paths:
             - ./node_modules
       - run:
-          command: curl nodefakeserver.azurewebsites.net
+          name: Run tests
+          command: npm run test
 
   deploy:
     working_directory: ~/repo
@@ -43,8 +39,6 @@ jobs:
       - run:
           name: Deploy to Azure Web App Using Azure Container Registry Task
           command: npm run deploy
-      - run:
-          command: curl nodefakeserver.azurewebsites.net
 
 workflows:
   version: 2
